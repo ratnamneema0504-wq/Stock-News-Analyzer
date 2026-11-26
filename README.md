@@ -318,7 +318,7 @@ Historical price movements and machine learning outputs represent observations f
 
 ## Author
 
-**Sarthak Daswani**
+**Ratnam Neema**
 
 GitHub: [@ratnamneema0504-wq](https://github.com/ratnamneema0504-wq)
 
