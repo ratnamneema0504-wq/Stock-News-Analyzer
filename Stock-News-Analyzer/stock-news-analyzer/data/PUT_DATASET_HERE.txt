@@ -1,0 +1,1 @@
+Put the actual built-in financial-news CSV in this folder. This placeholder is intentionally not a fake dataset.
