@@ -1,45 +1,39 @@
 # Stock News Analyzer
 
-**An AI-powered financial news intelligence and market analysis platform.**
+**An AI-powered financial news analysis and market intelligence application.**
 
-Stock News Analyzer is an interactive financial research application built with Python and Streamlit. It combines Natural Language Processing (NLP), semantic search, machine learning, and locally hosted Large Language Models (LLMs) to transform historical financial news into meaningful market insights.
+Stock News Analyzer is an interactive financial research application built with Python and Streamlit. It combines Natural Language Processing (NLP), semantic search, machine learning, and locally hosted Large Language Models (LLMs) to analyze historical financial news and generate meaningful market insights.
 
-The platform allows users to explore financial news, investigate sentiment trends, examine historical stock price movements, and interact with an AI assistant that generates context-aware answers grounded in the available dataset.
-
----
+The application helps users explore financial news, understand market sentiment, identify significant financial events, and examine their relationship with historical stock price movements.
 
 ## Key Features
 
-### 1. AI-Powered Financial Chat
-- Ask natural-language questions about companies, financial events, and market trends.
+### 1. AI-Powered News Analysis
+- Ask financial and stock-market-related questions through an interactive AI chat interface.
 - Generate context-aware responses using Ollama and Llama 3.2.
-- Maintain conversational context for follow-up questions.
-- Display supporting news records alongside generated answers.
-- Regenerate responses and explore suggested follow-up questions.
+- Retrieve relevant financial news to support AI-generated answers.
 
-### 2. Semantic News Search
+### 2. Semantic Search
 - Uses Sentence Transformers to generate text embeddings.
 - Implements FAISS for efficient similarity-based retrieval.
-- Retrieves relevant financial news based on contextual meaning rather than exact keyword matching.
-- Supports company, sector, topic, and date-based filtering.
+- Retrieves relevant news articles based on contextual meaning rather than exact keyword matching.
 
 ### 3. Sentiment Analysis
-- Examines Positive, Negative, and Neutral sentiment classifications.
-- Explores sentiment distribution across companies and sectors.
-- Connects historical sentiment observations with recorded price movements.
+- Categorizes financial news into Positive, Negative, and Neutral sentiment.
+- Analyzes sentiment distribution across companies and sectors.
+- Examines relationships between historical sentiment and stock price movements.
 
-### 4. Interactive Financial Dashboard
-- Displays article volume and company statistics.
+### 4. Market Impact Analysis
+- Examines historical stock price movements.
+- Identifies top gainers and losers.
+- Evaluates sector-wise performance.
+- Analyzes historical price changes associated with financial news.
+
+### 5. Interactive Dashboard
+- Displays financial statistics and market insights.
 - Visualizes historical financial news trends.
-- Provides sector-wise news analysis.
-- Examines average historical price changes.
-- Supports interactive filtering and CSV export.
-
-### 5. Market Impact Analysis
-- Identifies historical stock price movements associated with financial news.
-- Highlights top gainers and losers.
-- Examines the relationship between news sentiment and historical market performance.
-- Provides sector-level market impact comparisons.
+- Provides interactive charts and data filtering.
+- Supports CSV dataset uploads.
 
 ### 6. Machine Learning Models
 
@@ -49,16 +43,13 @@ The application incorporates multiple machine learning techniques:
 |---|---|
 | Decision Tree Classifier | Historical stock price direction classification |
 | K-Means Clustering | Grouping similar financial news articles |
-| TF-IDF | Text feature extraction for news clustering |
-| Production Rules | Extracting interpretable IF-THEN rules from the trained decision tree |
+| TF-IDF | Text feature extraction |
+| Production Rules | Extracting interpretable IF-THEN rules |
 
-The application also provides model evaluation metrics, confusion matrices, feature importance, and interactive prediction functionality.
-
-### 7. Custom Dataset Support
+### 7. Custom Dataset Upload
 - Upload custom financial news datasets in CSV format.
 - Validate dataset structure and required columns.
-- Perform analysis using uploaded data within the current session.
-- Automatically rebuild the semantic search index when the underlying dataset changes.
+- Perform analysis using uploaded data.
 
 ---
 
@@ -67,14 +58,13 @@ The application also provides model evaluation metrics, confusion matrices, feat
 | Category | Technologies |
 |---|---|
 | Programming Language | Python |
-| Frontend Framework | Streamlit |
+| Frontend | Streamlit |
 | Data Processing | Pandas, NumPy |
 | Machine Learning | Scikit-learn |
-| Natural Language Processing | Sentence Transformers |
+| NLP | Sentence Transformers |
 | Vector Search | FAISS |
 | Generative AI | Ollama, Llama 3.2 |
-| Data Visualization | Plotly |
-| Environment Management | Python Virtual Environment |
+| Visualization | Plotly |
 | Testing | Pytest |
 
 ---
@@ -86,8 +76,7 @@ The project includes a historical financial news dataset containing:
 - **15,000 records**
 - **30 companies**
 - **7 industry sectors**
-- **7 financial news sources**
-- Historical coverage from **2019 to 2025**
+- Historical coverage from **2019–2025**
 
 ### Dataset Attributes
 
@@ -111,7 +100,7 @@ The extended dataset contains 15 columns:
 | impact | Historical impact classification |
 | volume | Associated trading volume |
 
-The project also retains the original 5,000-record dataset.
+The project also includes the original 5,000-record dataset.
 
 ---
 
@@ -171,11 +160,9 @@ Stock-News-Analyzer/
 
 ### Prerequisites
 
-Make sure the following are installed:
-
 - Python 3.10 or later
 - Git
-- Ollama
+- Ollama (for local AI functionality)
 
 ### 1. Clone the Repository
 
@@ -217,19 +204,17 @@ pip install -r requirements.txt
 
 ### 5. Configure Ollama
 
-Install Ollama and download the required model:
+Download the required model:
 
 ```bash
 ollama pull llama3.2:3b
 ```
 
-Make sure the Ollama service is running:
+Start the Ollama service:
 
 ```bash
 ollama serve
 ```
-
-The application uses the locally hosted model for AI-generated responses. No paid cloud API key is required.
 
 ### 6. Configure Environment Variables
 
@@ -252,7 +237,7 @@ MAX_ARTICLE_CHARS=6000
 streamlit run app.py
 ```
 
-Open the following address in your browser:
+Open your browser:
 
 ```text
 http://localhost:8501
@@ -264,7 +249,7 @@ http://localhost:8501
 
 The project includes automated tests covering data loading, semantic retrieval, market analysis, machine learning models, and application guardrails.
 
-Run the test suite using:
+Run the test suite:
 
 ```bash
 python -m pytest -q
@@ -274,7 +259,7 @@ python -m pytest -q
 
 ## AI Grounding and Reliability
 
-Stock News Analyzer incorporates several mechanisms to improve the reliability of AI-generated responses:
+The application incorporates several mechanisms to improve the reliability of AI-generated responses:
 
 - **Evidence-based retrieval:** Responses are grounded in relevant records retrieved from the available dataset.
 - **Similarity threshold:** Queries with insufficient retrieval similarity are prevented from reaching the LLM.
@@ -291,13 +276,11 @@ Stock News Analyzer incorporates several mechanisms to improve the reliability o
 - Real-time stock prices and market feeds are not supported.
 - Machine learning outputs describe historical patterns and should not be interpreted as reliable future predictions.
 - AI-generated responses depend on the quality and coverage of the available dataset.
-- Ollama and the configured local model are required for AI-generated chat responses.
+- Ollama is required for AI-generated chat responses in the standard local setup.
 
 ---
 
 ## Future Improvements
-
-Potential areas for further development include:
 
 - Integration with live financial news APIs.
 - Real-time stock market data integration.
@@ -320,7 +303,9 @@ Historical price movements and machine learning outputs represent observations f
 
 **Ratnam Neema**
 
-GitHub: [@ratnamneema0504-wq](https://github.com/ratnamneema0504-wq)
+**GitHub Repository:** https://github.com/ratnamneema0504-wq/Stock-News-Analyzer
+
+**Deployed Application:** https://stock-newz-analyzer.streamlit.app/
 
 ---
 
